@@ -16,4 +16,19 @@ const authSchema = new mongoose.Schema({
   },
 });
 
-module.exports = mongoose.model("Auth", authSchema);
+// Login Event Schema
+const loginEventSchema = new mongoose.Schema({
+  email: {
+    type: String,
+    required: true,
+  },
+  loggedInAt: {
+    type: Date,
+    default: Date.now,
+  },
+});
+
+const Auth = mongoose.model("Auth", authSchema);
+const LoginEvent = mongoose.model("LoginEvent", loginEventSchema);
+
+module.exports = { Auth, LoginEvent };
